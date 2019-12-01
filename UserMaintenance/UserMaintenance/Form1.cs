@@ -62,5 +62,11 @@ namespace UserMaintenance
 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var valami = listBox1.SelectedIndex;
+            users.Remove(users[valami]);
+        }
     }
 }
