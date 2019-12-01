@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,32 @@ namespace UserMaintenance
                 
             };
             users.Add(u);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter outputFile;
+                
+                save.ShowDialog();
+                string fileName = save.FileName;
+                // create file, get streamwriter object
+                outputFile = File.CreateText(fileName);
+
+                for (int line = 0; line <= listBox1.Items.Count; line++)
+                {
+                    // write to file
+                    outputFile.WriteLine(listBox1.Items.ToString());
+                }
+
+                // close file
+                outputFile.Close();
+
+
+            }
         }
     }
 }
